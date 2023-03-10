@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - dev
+      - bench-error-handling
   workflow_dispatch:
 
 env:
