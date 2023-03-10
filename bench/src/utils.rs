@@ -190,10 +190,19 @@ pub fn parse_strace_output(output: &str) -> HashMap<String, StraceOutput> {
 pub fn run(cmd: &[&str]) {
   let mut process_builder = Command::new(cmd[0]);
   process_builder.args(&cmd[1..]).stdin(Stdio::piped());
-  let mut prog = process_builder.spawn().expect("failed to spawn script");
-  let status = prog.wait().expect("failed to wait on child");
-  if !status.success() {
-    panic!("Unexpected exit code: {:?}", status.code());
+  let output = match process_builder.output() {
+    Ok(output) => output,
+    Err(err) => panic!("failed to run command {:?}: {}", cmd, err),
+  };
+  if !output.status.success() {
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    panic!(
+      "Unexpected exit code: {:?} (stdout={:?}, stderr={:?})",
+      output.status.code(),
+      stdout,
+      stderr,
+    );
   }
 }
 
