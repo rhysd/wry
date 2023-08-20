@@ -434,7 +434,7 @@ impl<'a> WebViewBuilder<'a> {
   /// - macOS and Linux: `<scheme_name>://<path>` (so it will be `wry://examples` in `custom_protocol` example). On Linux, You need to enable `linux-headers` feature flag.
   /// - Windows: `https://<scheme_name>.<path>` (so it will be `https://wry.examples` in `custom_protocol` example)
   /// - Android: For loading content from the `assets` folder (which is copied to the Andorid apk) please
-  /// use the function [`with_asset_loader`] from [`WebViewBuilderExtAndroid`] instead.
+  /// use the function [`WebViewBuilderExtAndroid::with_asset_loader`] instead.
   /// This function on Android can only be used to serve assets you can embed in the binary or are
   /// elsewhere in Android (provided the app has appropriate access), but not from the `assets`
   /// folder which lives within the apk. For the cases where this can be used, it works the same as in macOS and Linux.
@@ -690,7 +690,7 @@ pub trait WebViewBuilderExtWindows {
   /// `false`, it disables all accelerator keys that access features specific to a web browser.
   /// The default value is `true`. See the following link to know more details.
   ///
-  /// https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/winrt/microsoft_web_webview2_core/corewebview2settings#arebrowseracceleratorkeysenabled
+  /// <https://learn.microsoft.com/en-us/microsoft-edge/webview2/reference/winrt/microsoft_web_webview2_core/corewebview2settings#arebrowseracceleratorkeysenabled>
   fn with_browser_accelerator_keys(self, enabled: bool) -> Self;
 
   /// Specifies the theme of webview2. This affects things like `prefers-color-scheme`.
@@ -965,7 +965,7 @@ impl WebView {
   }
 }
 
-/// An event enumeration sent to [`FileDropHandler`].
+/// An event enumeration sent to `FileDropHandler`.
 #[non_exhaustive]
 #[derive(Debug, Serialize, Clone)]
 pub enum FileDropEvent {

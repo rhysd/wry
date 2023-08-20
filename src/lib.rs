@@ -70,8 +70,8 @@
 //! [`EventLoop`]: crate::application::event_loop::EventLoop
 //! [`Window`]: crate::application::window::Window
 //! [`WebView`]: crate::webview::WebView
-//! [`with_file_drop_handler`]: crate::webview::WebView::with_file_drop_handler
-//! [`with_custom_protocol`]: crate::webview::WebView::with_custom_protocol
+//! [`with_file_drop_handler`]: crate::webview::WebViewBuilder::with_file_drop_handler
+//! [`with_custom_protocol`]: crate::webview::WebViewBuilder::with_custom_protocol
 
 #![allow(clippy::new_without_default)]
 #![allow(clippy::wrong_self_convention)]
